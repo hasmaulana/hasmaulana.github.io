@@ -191,6 +191,29 @@
             right: 40px;
             bottom: 20px;
         }
+
+        .end-button {
+            background-color: #04AA6D;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        #last {
+            animation: cssAnimation 0s 20s forwards;
+            visibility: hidden;
+        }
+
+        @keyframes cssAnimation {
+            to {
+                visibility: visible;
+            }
+        }
     </style>
 </head>
 
@@ -211,16 +234,17 @@
             <div style="padding: 0 25px;">
                 <b>Selamat Bertambah Usia Sayangku</b>
                 <br>
-                <b>Semoga di usiamu yang sudah 22 Tahun ini, kamu menjadi pribadi yang lebih baik lagi. Dikelilingi oleh Orang-orang yang sayang sama kamu</b>
+                <b>Semoga di usiamu yang sudah 22 Tahun ini, kamu menjadi pribadi yang lebih baik lagi. Dikelilingi oleh
+                    Orang-orang yang sayang sama kamu</b>
                 <br>
                 <b>Segala Harapan dan Cita-Cita mu segera tercapai, dilancarkan semua urusannya.</b>
                 <br>
-                <b>Dan... Terimakasih Sudah Hadir di Hidupku, tetaplah jadi Alasanku Berbahagia</b> 
+                <b>Dan... Terimakasih Sudah Hadir di Hidupku, tetaplah jadi Alasanku Berbahagia</b>
                 <br>
                 <small>(kadang marah sedih juga tak apa asal kamu ada terus yang).</small>
 
             </div>
-            
+
             <span class="sign"><i>Sayangmu (H)</i></span>
         </div>
         <div class="back">
@@ -228,6 +252,10 @@
             <h1>Novi Rahmawati</h1>
             <h3>Dari : Sayangmu (H)</h3>
         </div>
+    </div>
+    <div style="margin: 0; position: absolute; bottom: 20px; transform: translateY(-50%); width: 100vw; text-align: center;"
+        id="last">
+        <a href="carousel.html" class="end-button"><u>Last but not Least</u></a>
     </div>
 </body>
 
