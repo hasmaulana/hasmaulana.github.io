@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, "Liberation Sans", FreeSans, sans-serif;
+            background-color: #FA4032;
+            margin: 0;
+            padding: 0;
+            border-width: 0;
+            cursor: pointer;
+        }
+
+        #menu {
+            position: relative;
+            list-style-type: none;
+            padding-left: 5px;
+            z-index: 1000;
+            /* 1 */
+            display: inline-block;
+            text-align: center;
+        }
+
+        #menu li {
+            margin: 2px;
+            padding: 4px 10px;
+            border-radius: 5px;
+            background-color: #ffff80;
+        }
+
+        #menu li:hover {
+            background-color: #ffDD60;
+        }
+
+        #forPuzzle {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #FAB12F;
+            overflow: hidden;
+        }
+
+        .polypiece {
+            display: block;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .moving {
+            transition-property: top, left;
+            transition-duration: 1s;
+            transition-timing-function: linear;
+        }
+
+        .gameCanvas {
+            display: none;
+            overflow: hidden;
+            position: absolute;
+        }
+
+
+        /* CSS */
+        .button-89 {
+            cursor: pointer;
+            --b: 3px;
+            /* border thickness */
+            --s: .45em;
+            /* size of the corner */
+            --color: #373B44;
+
+            padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+            color: var(--color);
+            --_p: var(--s);
+            background:
+                conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--color) 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+            transition: .3s linear, color 0s, background-color 0s;
+            outline: var(--b) solid #0000;
+            outline-offset: .6em;
+            font-size: 100px;
+
+            border: 0;
+
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-89:hover,
+        .button-89:focus-visible {
+            --_p: 0px;
+            outline-color: var(--color);
+            outline-offset: .05em;
+        }
+
+        .button-89:active {
+            background: var(--color);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="position: relative;height: 100vh;" id="container-mulai">
+        <div style="position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px 20px; text-align: center;">
+
+            <h2 style="padding-bottom: 100px;">Main Game Dulu Bentar Yaaa (❁´◡`❁)</h2>
+            <button id="start-puzzle" class="button-89" role="button">MULAI</button>
+        </div>
+
+    </div>
+    <div style="position: relative; height: 100vh; display: none;" id="container-done">
+        <div style="position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px 20px; text-align: center;">
+            <h1 style="color: #fff;">Yeay, Kamu Berhasilll 👏👏</h1>
+            <img src="img/puzzle.jpg" alt="" width="50%" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <h3 style="color: #fff;">
+                Inget ndak? Ini kamu waktu kamu tidur di Ningsih karena kecapekan abis dari Malang trus lanjut nungguin aku pulang Kerja.
+                <br>
+                Tapi ayo bangun dulu, aku mau ceritain sesuatu.
+                <br>
+                <br>
+                <a href="timeline.html">Lanjut sini ya ceritanya >>></a>
+            </h3>
+        </div>
+    </div>
+
+    </div>
+    <div id="forPuzzle" style="display: none;"></div>
+    <ul id="menu" style="display: none;">
+        <li>&#x2630;</li>
+        <li>default image</li>
+        <li>load image</li>
+        <li>shape: <select id="shape">
+                <option value="1" selected>classic</option>
+                <option value="2">triangle</option>
+                <option value="3">round</option>
+                <option value="4">straight</option>
+            </select></li>
+        <li>12 pieces</li>
+        <li>25 pieces</li>
+        <li>50 pieces</li>
+        <li>100 pieces</li>
+        <li>200 pieces</li>
+    </ul>
+</body>
+
+</html>
+
+<script src="puzzle.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('#start-puzzle').on('click', function () {
+            $('#container-mulai').css('display', 'none');
+            $('#forPuzzle').css('display', 'block');
+            startPuzzle(12);
+        });
+        $('#forPuzzle').on('click', function () {
+            setTimeout(function () {
+                var img = $('#forPuzzle canvas').length;
+                console.log('click');
+                console.log(img);
+                if (img === 0) {
+                    $('#container-mulai').hide();
+                    $('#forPuzzle').hide();
+                    $('#container-done').css('display', 'block');
+                }
+            }, 100);
+        });
+    });
+</script>
